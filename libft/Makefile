@@ -1,4 +1,4 @@
-SRC			= ft_strlen ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_toupper ft_tolower ft_strchr ft_strrchr ft_strncmp ft_strlcpy ft_strlcat ft_atoi ft_memset
+SRC			= ft_strlen ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_toupper ft_tolower ft_strchr ft_strrchr ft_strncmp ft_strlcpy ft_strlcat ft_atoi ft_memset ft_memcpy
 SRCS		= $(addsuffix .c, ${SRC})
 OBJS		= ${SRCS:.c=.o}
 NAME		= libft.a
