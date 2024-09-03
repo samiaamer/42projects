@@ -6,7 +6,7 @@
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 16:08:03 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/01 16:40:46 by sabutale         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:46:35 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	if (i == n)
 		return (0);
-	return (s1[i] - s2[i]);
+	return ((unsigned char) s1[i] - (unsigned char )s2[i]);
 }

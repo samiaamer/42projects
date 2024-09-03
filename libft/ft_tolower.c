@@ -6,13 +6,13 @@
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:47:22 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/01 13:49:33 by sabutale         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:41:02 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
 		c = c + 32;

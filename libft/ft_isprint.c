@@ -6,13 +6,13 @@
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 14:04:30 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/01 14:07:41 by sabutale         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:44:13 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);
 }

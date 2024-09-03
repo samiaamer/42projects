@@ -6,7 +6,7 @@
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:09:03 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/01 18:10:26 by sabutale         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:46:40 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	i = 0;
 	if (size == 0)
-		return (strlen(src));
+		return (ft_strlen(src));
 	while (i < size - 1 && src[i])
 	{
 		dst[i] = src[i];
@@ -28,5 +28,5 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	{
 		dst[i] = '\0';
 	}
-	return(ft_strlen(src));
+	return (ft_strlen (src));
 }
