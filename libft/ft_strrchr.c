@@ -18,7 +18,10 @@ char	*ft_strrchr(const char *s, int c)
 	int	len;
 
 	len = ft_strlen(s) - 1;
+	if(c == '\0')
+		return (0);
 	j = (unsigned char) c;
+	
 	while (len >= 0)
 	{
 		if (s[len] == j)

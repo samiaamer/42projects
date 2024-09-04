@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 12:33:07 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/04 12:47:09 by sabutale         ###   ########.fr       */
+/*   Created: 2024/09/04 14:58:28 by sabutale          #+#    #+#             */
+/*   Updated: 2024/09/04 15:19:56 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-//#include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+#include "libft.h"
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	i;
-	unsigned char	*d;
-	const unsigned char	*s;
+	const unsigned char	*ss1;
+	const unsigned char	*ss2;
 
 	i = 0;
-	d = (unsigned char *) dest;
-	s = (const unsigned char *) src;
-	if( !dest && !src )
-		return (0);
+	ss1 = (const unsigned char *) s1;
+	ss2 = (const unsigned char *) s2;
 	while (i < n)
 	{
-		d[i] = s[i];
+		if (ss1[i] != ss2[i])
+			return (ss1[i] - ss2[i]);
 		i++;
 	}
-	return (dest);
+	return (0);
 }
 /*
-int	main()
+int main()
 {
-	char	src[] = "samia amer";
-	char	dest[20];
-	ft_memcpy(dest, src, 11);
-	printf("destenation %s", dest);
-	return(0);
+	const char s1[] = "samia";
+	const char s2[] = "aqq";
+	printf("%d\n", ft_memcmp(s1,s2,3));
+	return 0;
 }*/
