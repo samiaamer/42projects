@@ -40,3 +40,4 @@ int	main()
 	printf("destenation %s", dest);
 	return(0);
 }*/
+/*Copies a block of memory from one location to another.*/
