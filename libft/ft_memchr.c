@@ -27,3 +27,4 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return(0);
 }
+/*Finds the first occurrence of a value in a block of memory.*/
