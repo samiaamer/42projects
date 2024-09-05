@@ -24,3 +24,4 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
+/*Sets a block of memory to a specified value*/
