@@ -36,3 +36,4 @@ int	ft_atoi(const char *nptr)
 	}
 	return (sign * res);
 }
+/* Converts a string to an integer.*/
