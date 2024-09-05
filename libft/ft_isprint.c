@@ -16,3 +16,4 @@ int	ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);
 }
+/*Checks if a character is printable.*/
