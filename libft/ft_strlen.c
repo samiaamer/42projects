@@ -21,3 +21,4 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+/*Returns the length of a string (excluding the null terminator).*/
