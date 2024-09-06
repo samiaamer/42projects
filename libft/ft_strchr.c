@@ -27,4 +27,4 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (0);
 }
-/*Finds the last occurrence of a character in a string.*/
+/*Finds the first occurrence of a character in a string.*/
