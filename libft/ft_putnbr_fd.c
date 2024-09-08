@@ -20,14 +20,14 @@ void	ft_putnbr_fd(int nb, int fd)
 	}
 	else if (nb < 0)
 	{
-		ft_putchar('-', fd);
+		ft_putchar_fd('-', fd);
 		nb = -nb;
-		ft_putnbr(nb, fd);
+		ft_putnbr_fd(nb, fd);
 	}
 	else if (nb > 9)
 	{
-		ft_putnbr_fd(nb / 10);
-		ft_putnbr_fd(nb % 10);
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
 	}
 	else
 		ft_putchar_fd(nb + 48, fd);
