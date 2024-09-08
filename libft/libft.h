@@ -6,7 +6,7 @@
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:31:03 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/05 16:00:18 by sabutale         ###   ########.fr       */
+/*   Updated: 2024/09/08 11:51:14 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	ft_atoi(const char *nptr);
 int     ft_memcmp(const void *s1, const void *s2, size_t n);
 char 	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 void    *ft_memset(void *s, int c, size_t n);
 void    ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void* dest, const void* src, size_t n);
