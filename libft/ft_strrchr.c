@@ -17,19 +17,16 @@ char	*ft_strrchr(const char *s, int c)
 		unsigned char	j;
 	int	len;
 
-	len = ft_strlen(s) - 1;
-	if(c == '\0')
-		return (0);
+	len = ft_strlen(s);
 	j = (unsigned char) c;
-	
+	if(j == 0)
+		return ((char *)s + len);
 	while (len >= 0)
 	{
 		if (s[len] == j)
 			return ((char *)s + len);
 		len--;
 	}
-	if (j == 0)
-		return ((char *)s + len);
 	return (0);
 }
 /*Finds the last occurrence of a character in a string.*/
