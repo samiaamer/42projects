@@ -30,3 +30,4 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	}
 	return (ft_strlen (src));
 }
+/*Copies a string to a buffer, ensuring null termination and avoiding overflow.*/

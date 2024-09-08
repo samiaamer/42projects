@@ -32,3 +32,4 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *)s + len);
 	return (0);
 }
+/*Finds the last occurrence of a character in a string.*/

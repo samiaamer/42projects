@@ -23,3 +23,4 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (0);
 	return ((unsigned char) s1[i] - (unsigned char )s2[i]);
 }
+/*Compares a specified number of characters in two strings.*/

@@ -35,3 +35,4 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[i] = '\0';
 	return (src_len + dst_len);
 }
+/*Appends a string to a buffer, ensuring null termination and avoiding overflow.*/
