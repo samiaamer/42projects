@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+/*#include <stdio.h>*/
 
 int	ft_atoi(const char *nptr)
 {
@@ -36,4 +37,11 @@ int	ft_atoi(const char *nptr)
 	}
 	return (sign * res);
 }
+/*
+int main()
+{
+	 const char *test1 = "123";
+	  printf("ft_atoi(\"%s\") = %d\n", test1, ft_atoi(test1));
+		 return 0;
+}*/
 /* Converts a string to an integer.*/
