@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/12 14:03:01 by sabutale          #+#    #+#             */
+/*   Updated: 2024/09/12 14:03:03 by sabutale         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	count_digit(int n)
@@ -16,11 +28,12 @@ static int	count_digit(int n)
 }
 static void	makeString(char *res, int n, int len, int sign)
 {
+	res[len] = '\0';
 	if (n == 0)
 		res[0] = '0';
-	while (n != 0)
+	while (len > 0)
 	{
-		res[--len + (sign == -1)] = (n % 10) + '0';
+		res[--len] = (n % 10) + '0';
 		n /= 10;
 	}
 	if (sign == -1)
@@ -35,13 +48,15 @@ char	*ft_itoa(int n)
 	char	*res;
 
 	sign = 1;
+	len = count_digit(n);
+	if (n == -2147483648)
+		return ft_strdup("-2147483648");
 	if (n < 0)
 	{
 		n = -n;
 		sign = -1;
 	} 
-	len = count_digit(n);
-	res = malloc(len + 1 + (sign == -1));
+	res = malloc(len + 1);
 	if (!res)
 		return (NULL);
 	makeString(res, n, len, sign);
