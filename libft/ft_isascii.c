@@ -16,4 +16,4 @@ int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }
-/*Checks if a character is an ASCII character.*/
+/*Checks if a character is an ASCII character. */

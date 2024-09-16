@@ -18,4 +18,4 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
-/*Checks if a character is a digit (0-9).*/
+/*Checks if a character is a digit (0-9). */

@@ -18,4 +18,4 @@ int	ft_toupper(int c)
 		c = c - 32;
 	return (c);
 }
-/*Converts a character to Uppercase.*/
+/* Converts a character to Uppercase.*/

@@ -20,4 +20,4 @@ int	ft_isalnum(int c)
 		return (1);
 	return (0);
 }
-/*Checks if a character is alphanumeric (letter or digit).*/
+/*Checks if a character is alphanumeric (letter or digit). */

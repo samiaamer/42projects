@@ -22,17 +22,17 @@ int	ft_atoi(const char *nptr)
 	res = 0;
 	i = 0;
 	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')// Skip any whitespace characters (space, tab, etc.) at the beginning
 		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (nptr[i] == '-' || nptr[i] == '+')// Check for a sign indicator ('-' or '+') and adjust the sign variable
 	{
 		if (nptr[i] == '-')
-			sign = -1;
-		i++;
+			sign = -1;// Set sign to -1 for negative numbers
+		i++;// Move past the sign character
 	}
-	while ('0' <= nptr[i] && nptr[i] <= '9')
+	while ('0' <= nptr[i] && nptr[i] <= '9')// Convert the string representation of the number to an integer
 	{
-		res = res * 10 + nptr[i] - '0';
+		res = res * 10 + nptr[i] - '0';// Update result by shifting previous digits and adding the new digit
 		i++;
 	}
 	return (sign * res);

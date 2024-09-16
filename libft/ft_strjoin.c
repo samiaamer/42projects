@@ -1,33 +1,29 @@
-#include "libfr.h"
+#include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+// This function concatenates two strings `s1` and `s2` and returns a new string.
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	int	len_s1;
-	int	len_s2;
-	char	*s3;
-	int	totalSize;
-	int	i;
-	int	j;
+    char *s3; // Pointer to hold the concatenated string
+    int i; // Index for `s1`
+    int j; // Index for `s2`
 
-	i = 0;
-	j = 0;
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	totalSize = len_s1 + len_s2;
-	s3 = malloc(totalSize+ 1);
-	if (s3 == NULL)
-		return (0);
-	while (s1 != '\0')
-	{
-		s3[i] = s1[i];
-		i++;
-	}
-	while (s2 != '\0')
-	{
-		s3[i] = s2[j];
-		j++;
-		i++;
-	}
-	s3[i] = '\0';
-	return(s3);
+    i = 0; // Initialize index for `s1`
+    j = 0; // Initialize index for `s2`
+    s3 = malloc(ft_strlen(s1) + ft_strlen(s2) + 1); // Allocate memory for the new string
+    if (s3 == NULL) // Check if memory allocation failed
+        return (0); // Return NULL if allocation fails
+    while (s1[i] != '\0') // Copy the first string
+    {
+        s3[i] = s1[i]; // Copy each character from `s1` to `s3`
+        i++;
+    }
+    while (s2[j] != '\0') // Copy the second string
+    {
+        s3[i] = s2[j]; // Copy each character from `s2` to `s3`
+        j++;
+        i++;
+    }
+    s3[i] = '\0'; // Null-terminate the new string
+    return (s3); // Return the concatenated string
 }
+

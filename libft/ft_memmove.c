@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+// This function copies `n` bytes from the source memory block `src` to the destination memory block `dest`.
+// It handles overlapping memory regions correctly.
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
@@ -20,18 +22,18 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	i = 0;
 	d = (unsigned char *) dest;
-        s = (const unsigned char *) src;
-	if (s == NULL && d == NULL)
+  s = (const unsigned char *) src;
+	if (s == NULL && d == NULL)// Check for null pointers
 		return (NULL);
-	if (s > d)
+	if (s > d)// If source is after destination in memory
 	{
-		return (ft_memcpy(dest, src, n));
+		return (ft_memcpy(dest, src, n));// Use memcpy if no overlap
 	}
-	else if (d > s)
+	else if (d > s) // If destination is after source in memory
 	{
-		i = n;
-		while (i--)
-			d[i] = s[i];
+		i = n;// Set index to the number of bytes
+		while (i--)// Move from the end to the beginning
+			d[i] = s[i];// Copy each byte from source to destination
 	}
 	return (dest);
 }
