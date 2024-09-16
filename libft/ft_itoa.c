@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/12 14:03:01 by sabutale          #+#    #+#             */
+/*   Updated: 2024/09/12 14:03:03 by sabutale         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 
@@ -49,7 +61,7 @@ char	*ft_itoa(int n)
 	{
 		n = -n;// Make `n` positive
 		sign = -1;// Indicate negative sign
-	} 
+	}
 	res = malloc(len + 1);// Allocate memory for the resulting string
 	if (!res)
 		return (NULL);// Return NULL if allocation fails
