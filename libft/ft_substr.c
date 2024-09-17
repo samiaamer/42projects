@@ -34,8 +34,7 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
     if (!substr)
         return (NULL);
 
-    // Copy the substring from `s` to `substr`
-    ft_memcpy(substr, s + start, len);
+    ft_memcpy(substr, s + start, len);// Copy the substring from `s` to `substr`
     substr[len] = '\0'; // Null-terminate the substring
 
     return (substr); // Return the substring

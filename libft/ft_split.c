@@ -39,11 +39,10 @@ int count_word(char const *s, char c)//count how many words are in the string
 static char *allocate_mem(const char *start, size_t length)//allocate memory for the words and copy them into the malloc
 {
   char *substr = (char *)malloc(length + 1);// Allocate memory for the substring
-  if(substr)
-  {
-    ft_strlcpy(substr, start, length);// Copy the substring into the allocated memory
-    substr[length] = '\0';// Null-terminate the substring
-  }
+  if(!substr)
+  	return (NULL);
+   ft_strlcpy(substr, start, length + 1);// Copy the substring into the allocated memory
+   substr[length] = '\0';// Null-terminate the substring
   return (substr);// Return the allocated substring
 }
 
@@ -68,6 +67,7 @@ static int split_words(char const *s, char c, char **res)//splits the string int
             {
                 while (i > 0)// Free previously allocated words if allocation fails
                     free(res[--i]);
+                free(res);
                 return (-1);// Return -1 to indicate failure
             }
         }
@@ -95,11 +95,6 @@ char **ft_split(char const *s, char c)
   if (!res)// Check if memory allocation failed
     return (NULL);
   words_extracted = split_words(s, c, res);// Split the string into words and store them in the array
-  if (words_extracted < 0)// Check if there was an error in splitting
-  {
-    free(res);// Free the allocated memory
-    return (NULL); // Return NULL if splitting failed
-  }
   res[words_extracted] = NULL;// Set the last element of the array to NULL to mark the end
   return (res);// Return the array of strings
 }

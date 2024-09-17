@@ -27,12 +27,10 @@ char *ft_strtrim(char const *s1, char const *set)
     if (!s1 || !set) // Check for null pointers
         return (NULL);
 
-    // Move `start` index to the first character not in `set`
-    while (s1[start] && ft_strchr(set, s1[start]))
+    while (s1[start] && ft_strchr(set, s1[start]))// Move `start` index to the first character not in `set`
         start++;
 
-    // Move `end` index to the last character not in `set`
-    while (end > start && ft_strchr(set, s1[end]))
+    while (end > start && ft_strchr(set, s1[end]))// Move `end` index to the last character not in `set`
         end--;
 
     new_size = end - start + 1; // Calculate the length of the new trimmed string
@@ -40,8 +38,7 @@ char *ft_strtrim(char const *s1, char const *set)
     if (!new_str)
         return (NULL);
 
-    // Copy the trimmed substring to `new_str`
-    ft_memcpy(new_str, &s1[start], new_size);
+    ft_memcpy(new_str, &s1[start], new_size); // Copy the trimmed substring to `new_str`
     new_str[new_size] = '\0'; // Null-terminate the new string
 
     return (new_str); // Return the trimmed string
