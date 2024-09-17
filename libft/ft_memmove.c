@@ -37,9 +37,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-int main()
+/*int main()
 {
 	const char src[] ="samia";
 	printf("%s", ft_memmove(src +2 , src, 3));
 	return (0);
-}
+}*/
