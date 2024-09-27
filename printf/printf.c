@@ -25,6 +25,8 @@ int ft_print_interger(int num)
   int count;
 
   count = 0;
+  if (n == -2147483648)
+		return (11);
   if (num < 0)
   {
     write (1, "-", 1);
