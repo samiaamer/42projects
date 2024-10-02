@@ -13,15 +13,14 @@
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
-{// This function sets the first `n` bytes of the memory area pointed to by `s` to zero.
+{
 	unsigned char	*ss;
 
-	ss = (unsigned char *)s;// Cast the pointer to `unsigned char*` for byte-by-byte manipulation
-	while (n--)// Loop through each byte
+	ss = (unsigned char *)s;
+	while (n--)
 	{
-		*ss = 0;// Set the current byte to 0
-		ss++; // Move to the next byte
+		*ss = 0;
+		ss++;
 	}
-	//ft_memset(s,0,n);
 }
 /*Fills a block of memory with zeroes (use memset instead).*/

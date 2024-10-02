@@ -12,24 +12,23 @@
 
 #include "libft.h"
 
-// This function writes an integer `nb` to the file descriptor `fd` as a string.
 void	ft_putnbr_fd(int nb, int fd)
 {
-	if (nb == -2147483648)// Special case for the smallest integer
+	if (nb == -2147483648)
 	{
-		write (fd, "-2147483648", 11);
+		write(fd, "-2147483648", 11);
 	}
 	else if (nb < 0)
 	{
-		ft_putchar_fd('-', fd);// Write the minus sign
-		nb = -nb;// Make the number positive
-		ft_putnbr_fd(nb, fd);// Recursively handle the positive part
+		ft_putchar_fd('-', fd);
+		nb = -nb;
+		ft_putnbr_fd(nb, fd);
 	}
-	else if (nb > 9)// If the number has more than one digit
+	else if (nb > 9)
 	{
-		ft_putnbr_fd(nb / 10, fd);// Recursively handle the first part
-		ft_putnbr_fd(nb % 10, fd);// Handle the last digit
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
 	}
-	else// If the number is a single digit
-		ft_putchar_fd(nb + 48, fd);// Convert the digit to a character and write it
+	else
+		ft_putchar_fd(nb + 48, fd);
 }

@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <limits.h>
+//#include <limits.h>
 
-int	handle_format(char format, va_list args)
+static int	handle_format(char format, va_list args)
 {
 	if (format == 's')
 		return (ft_print_string(va_arg(args, char *)));
@@ -55,7 +55,6 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
 /*
 int main(void)
 {
@@ -77,9 +76,6 @@ int main(void)
 	ft_printf("String: %s\n", "Hello, World!");
     ft_printf(" %x \n", LONG_MIN);
 	ft_printf("String: %s\n", "Hello, World!");
-    ft_printf(" %x %x %x %x %x %x %x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 	ft_printf(" %x \n", LONG_MIN);
-    ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%\n---- %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%\n ----- %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%\n---- %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0,0, 42, 0);
-
     return 0;
 }*/

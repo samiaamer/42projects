@@ -6,65 +6,61 @@
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:03:01 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/12 14:03:03 by sabutale         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:32:16 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
 static int	count_digit(int n)
-{// This function calculates the number of digits required to represent an integer `n` as a string.
+{
 	int	len;
 
 	len = 0;
-	if (n <= 0)// Check if the number is negative or zero
-		len++;// Account for the minus sign 
-	while (n != 0) // Loop until all digits are counted
+	if (n <= 0)
+		len++;
+	while (n != 0)
 	{
-		n /= 10;// Remove the last digit from the number
-		len++;// Increase the digit count
+		n /= 10;
+		len++;
 	}
-	return (len);// Return the total digit count
+	return (len);
 }
 
-// This function converts an integer `n` to a string and stores it in `res`.
-// It handles the placement of digits and sign based on the `sign` value.
-static void	makeString(char *res, int n, int len, int sign)
+static void	make_string(char *res, int n, int len, int sign)
 {
-	res[len] = '\0';// Null-terminate the string
-	if (n == 0)// Special case for zero
+	res[len] = '\0';
+	if (n == 0)
 		res[0] = '0';
-	while (len > 0) // Fill the string with digits
+	while (len > 0)
 	{
-		res[--len] = (n % 10) + '0';// Extract last digit and convert to character
-		n /= 10;// Remove last digit from the number
+		res[--len] = (n % 10) + '0';
+		n /= 10;
 	}
-	if (sign == -1)// If the number was negative
+	if (sign == -1)
 	{
-		res[0] = '-';// Add the minus sign at the beginning
+		res[0] = '-';
 	}
 }
 
-// This function converts an integer `n` to a dynamically allocated string.
 char	*ft_itoa(int n)
 {
-	int	sign;
-	int	len;
+	int		sign;
+	int		len;
 	char	*res;
 
 	sign = 1;
-	len = count_digit(n);// Calculate the length of the string needed
-	if (n == -2147483648)// Special case for the smallest integer value
-		return ft_strdup("-2147483648");
-	if (n < 0)// If the number is negative
+	len = count_digit(n);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n < 0)
 	{
-		n = -n;// Make `n` positive
-		sign = -1;// Indicate negative sign
+		n = -n;
+		sign = -1;
 	}
-	res = malloc(len + 1);// Allocate memory for the resulting string
+	res = malloc(len + 1);
 	if (!res)
-		return (NULL);// Return NULL if allocation fails
-	makeString(res, n, len, sign);// Convert the number to a string
-	return (res);// Return the resulting string
+		return (NULL);
+	make_string(res, n, len, sign);
+	return (res);
 }

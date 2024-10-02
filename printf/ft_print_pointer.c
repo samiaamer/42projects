@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int     ft_print_pointer(void *ptr)
+int	ft_print_pointer(void *ptr)
 {
-        int     count;
+	int	count;
 
-        count = 0;
-        if (!ptr)
-                return (write(1, "(nil)", 5));
-        count += write(1, "0x", 2);
-        count += ft_print_hex((unsigned long)ptr, 'x');
-        return (count);
+	count = 0;
+	if (!ptr)
+		return (write(1, "(nil)", 5));
+	count += write(1, "0x", 2);
+	count += ft_print_hex((unsigned long)ptr, 'x');
+	return (count);
 }
