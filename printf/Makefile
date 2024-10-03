@@ -12,7 +12,7 @@ AR = ar rcs
 
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT_PATH = ../libft
+LIBFT_PATH = libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 %.o: %.c
@@ -30,7 +30,10 @@ clean:
 	make -C $(LIBFT_PATH) clean
 	$(RM) $(OBJS)
 
-fclean: clean
+fclean_ft:
+	make -C $(LIBFT_PATH) fclean
+
+fclean: fclean_ft clean
 	$(RM) $(NAME)
 
 re: fclean all
