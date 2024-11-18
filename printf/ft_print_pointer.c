@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/01 18:11:24 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/02 18:47:43 by sabutale         ###   ########.fr       */
+/*   Created: 2024/10/01 16:10:12 by sabutale          #+#    #+#             */
+/*   Updated: 2024/10/01 16:10:42 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_print_pointer(void *ptr)
 {
-	size_t	i;
-	size_t	j;
-	size_t	src_len;
-	size_t	dst_len;
+	int	count;
 
-	i = 0;
-	j = 0;
-	src_len = ft_strlen(src);
-	dst_len = ft_strlen(dst);
-	if (size == 0 || dst_len >= size)
-		return (src_len + size);
-	i = dst_len;
-	while (src[j] && j < size - dst_len - 1)
-	{
-		dst[i] = src[j];
-		i++;
-		j++;
-	}
-	dst[i] = '\0';
-	return (src_len + dst_len);
+	count = 0;
+	if (!ptr)
+		return (write(1, "(nil)", 5));
+	count += write(1, "0x", 2);
+	count += ft_print_hex((unsigned long)ptr, 'x');
+	return (count);
 }

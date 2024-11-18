@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/01 18:11:24 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/02 18:47:43 by sabutale         ###   ########.fr       */
+/*   Created: 2024/10/01 16:07:45 by sabutale          #+#    #+#             */
+/*   Updated: 2024/10/01 16:08:04 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_print_char(char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	src_len;
-	size_t	dst_len;
-
-	i = 0;
-	j = 0;
-	src_len = ft_strlen(src);
-	dst_len = ft_strlen(dst);
-	if (size == 0 || dst_len >= size)
-		return (src_len + size);
-	i = dst_len;
-	while (src[j] && j < size - dst_len - 1)
-	{
-		dst[i] = src[j];
-		i++;
-		j++;
-	}
-	dst[i] = '\0';
-	return (src_len + dst_len);
+	write (1, &c, 1);
+	return (1);
 }

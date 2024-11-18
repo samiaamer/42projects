@@ -12,22 +12,18 @@
 
 #include "libft.h"
 
-
-// This function locates the first occurrence of a specified character `c` in the memory block `s`.
-// It searches within the first `n` bytes of the memory block.
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*ss;
-	unsigned char	cc; 
+	unsigned char		cc;
 
-	ss = (const unsigned char *)s;// Cast the memory block to an unsigned char pointer
-	cc = (unsigned char)c;// Cast the search character to unsigned char
-	while (n--)// Loop through the memory block
+	ss = (const unsigned char *)s;
+	cc = (unsigned char)c;
+	while (n--)
 	{
-		if (*ss == cc)// Check if the current byte matches the search character
-			return ((void *)ss);// Return a pointer to the matching byte
+		if (*ss == cc)
+			return ((void *)ss);
 		ss++;
 	}
-	return(0);
+	return (0);
 }
-/*Finds the first occurrence of a value in a block of memory.*/

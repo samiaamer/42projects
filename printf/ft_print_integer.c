@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   print_integer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/01 18:11:24 by sabutale          #+#    #+#             */
-/*   Updated: 2024/09/02 18:47:43 by sabutale         ###   ########.fr       */
+/*   Created: 2024/10/01 16:08:13 by sabutale          #+#    #+#             */
+/*   Updated: 2024/10/01 16:08:40 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_print_integer(int num)
 {
-	size_t	i;
-	size_t	j;
-	size_t	src_len;
-	size_t	dst_len;
+	int	count;
 
-	i = 0;
-	j = 0;
-	src_len = ft_strlen(src);
-	dst_len = ft_strlen(dst);
-	if (size == 0 || dst_len >= size)
-		return (src_len + size);
-	i = dst_len;
-	while (src[j] && j < size - dst_len - 1)
+	count = 0;
+	if (num == -2147483648)
 	{
-		dst[i] = src[j];
-		i++;
-		j++;
+		write(1, "-2147483648", 11);
+		return (11);
 	}
-	dst[i] = '\0';
-	return (src_len + dst_len);
+	if (num < 0)
+	{
+		count += write (1, "-", 1);
+		num = -num;
+	}
+	if (num >= 10)
+		count += ft_print_integer(num / 10);
+	count += ft_print_char(num % 10 + '0');
+	return (count);
 }

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 /*#include <stdio.h>*/
 
 int	ft_atoi(const char *nptr)
@@ -22,26 +23,26 @@ int	ft_atoi(const char *nptr)
 	res = 0;
 	i = 0;
 	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')// Skip any whitespace characters (space, tab, etc.) at the beginning
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
 		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')// Check for a sign indicator ('-' or '+') and adjust the sign variable
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
-			sign = -1;// Set sign to -1 for negative numbers
-		i++;// Move past the sign character
+			sign = -1;
+		i++;
 	}
-	while ('0' <= nptr[i] && nptr[i] <= '9')// Convert the string representation of the number to an integer
+	while ('0' <= nptr[i] && nptr[i] <= '9')
 	{
-		res = res * 10 + nptr[i] - '0';// Update result by shifting previous digits and adding the new digit
+		res = res * 10 + nptr[i] - '0';
 		i++;
 	}
 	return (sign * res);
 }
 /*
-int main()
+int	main(void)
 {
-	 const char *test1 = "123";
-	  printf("ft_atoi(\"%s\") = %d\n", test1, ft_atoi(test1));
-		 return 0;
+		const char *test1 = "123";
+		printf("ft_atoi(\"%s\") = %d\n", test1, ft_atoi(test1));
+			return (0);
 }*/
 /* Converts a string to an integer.*/
