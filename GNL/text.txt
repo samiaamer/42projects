@@ -1,5 +1,114 @@
-Hello, world \n sdf samia aamer 
-This is line two.
-And this is line three.
-And this is line four.
+this is line one
+this is line two.
+this is line three.
 
+### **Computer Security Definition**
+
+- Protection of automated information systems to maintain:
+    - **Confidentiality**
+    - **Integrity**
+    - **Availability**
+
+---
+
+### **CIA Triad**
+
+1. **Confidentiality**
+    - Protects sensitive information from unauthorized access.
+        - **Privacy**: Controls who can collect and share personal information.
+        - it’s done through:
+            - cryptography: computer —> Encryption key —> ciphertext ////  two important parts of it (cipher and key)
+            - Authentication/Authorization: checking if the user is the owner of the data
+2. **Integrity**
+    - **Data Integrity**: Ensures information is modified only in authorized ways. (trustworthiness of data)
+        - integrity protection mechanisms:
+            1. preventive: securing the data 
+            2. Detective: every message has a Hash code if it changes then the message has been modified
+3. **Availability**
+    - Ensures systems are accessible to authorized users when needed.
+    - can be attacked through:
+        1. DOS(Denial of Service): the user sends so many requests that the utilization of the server can’t handle
+        2. DDOS(Distributed Denial of Service): sending these requests from many devices 
+4. **Accountability**
+    - Ensures actions are traceable to responsible parties.
+5. Non-Repudiation: protection against denial by one of the entities of a behavior (uses digital signature)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/830cadd3-5bb9-411b-a488-702961fd90be/d079781c-3fc5-43e5-af02-8e8edc325b93/image.png)
+
+---
+
+### **Impact Levels of Security Breach**
+
+- **Low**: Minor effects on operations or assets (e.g., slight financial loss).
+- **Moderate**: Serious effects on operations or assets (e.g., significant financial loss).
+- **High**: Severe effects, potentially catastrophic (e.g., loss of life).
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/830cadd3-5bb9-411b-a488-702961fd90be/6bb5240c-e72a-4898-a14c-e11aeea0ec46/image.png)
+
+---
+
+### **Mind Map Representation**
+
+```
+                  Computer Security
+                        |
+                +-------+-------+
+                |               |
+               CIA           Additional
+                |               |
+          +-----+-----+       +---------+
+          |     |     |       |         |
+   Conf.  Int.  Avail.   Authenticity Accountability
+      |        |        |
+  +---+---+    |    +---+---+
+  |       |    |    |       |
+Data   Privacy Data  Sys.  Ensure traceability of actions
+Conf.   Control Int.
+         |
+   +-----+-----+
+   |           |
+   Low       Moderate
+   |           |
+Minor     Serious Effects
+Effects   (e.g., significant loss)
+
+```
+
+---
+
+- **Security Attack**: Any action compromising organizational information security.
+- **Security Mechanism**: Processes or devices to detect, prevent, or recover from attacks.
+- **Security Service**: Enhances security in data processing, using mechanisms to counter attacks.
+
+---
+
+| **Threat** | A potential cause of an unwanted incident that may compromise system security. Examples: natural disasters, hackers. |
+| --- | --- |
+| **Attack** | An actual attempt to exploit a vulnerability in a system, aiming to cause harm. Examples: phishing, malware installation. |
+
+---
+
+- A *passive attack* attempts to learn or make use of information from the system but does not affect system resources
+    - Two types of passive attacks are:
+        - The release of message contents
+        - Traffic analysis
+- An *active attack* attempts to alter system resources or affect their operation
+    
+    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/830cadd3-5bb9-411b-a488-702961fd90be/bdb9e8e8-58ec-4962-8418-1a5fbea91cb7/image.png)
+    
+
+---
+
+### Attack Surface Categories
+
+- **Network attack surface**
+    
+    Refers to vulnerabilities over an enterprise network, wide-area network, or the Internet
+    
+- **Software attack surface**
+    
+    Refers to vulnerabilities in application, utility, or operating system code
+    
+- **Human attack surface**
+    
+    Refers to vulnerabilities created by personnel or outsiders
