@@ -22,10 +22,13 @@ char *read_to_leftover(int fd, char *leftover)
   buffer = malloc(BUFFER_SIZE + 1);
   if (!buffer)
     return (NULL);
-  bytes_read = read(fd, buffer, BUFFER_SIZE);
   
-  while(!ft_strchr(leftover, '\n') && bytes_read > 0)
+  
+  while(!ft_strchr(leftover, '\n'))
   {
+      bytes_read = read(fd, buffer, BUFFER_SIZE);
+      if (bytes_read <= 0) 
+        break;
       buffer[bytes_read] = '\0';
       temp = ft_strjoin(leftover, buffer);
       free(leftover);
@@ -86,10 +89,10 @@ char *get_next_line(int fd)
   char  *line;
 
   if (fd < 0 || BUFFER_SIZE <= 0)
-    return (0);
+    return (NULL);
   leftover = read_to_leftover(fd, leftover);
   if (!leftover)
-    return (0);
+    return (NULL);
   line = get_line(leftover);
   leftover = save_left(leftover);
   return (line);

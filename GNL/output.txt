@@ -1,0 +1,8 @@
+this is file1: Hello, world \n sdf samia aamer 
+this is file1: This is line two.
+this is file1: And this is line three.
+this is file1: And this is line four.
+this is file1: 
+this is file2:  this is file 2
+this is file2:  Hello
+this is file2:  hi

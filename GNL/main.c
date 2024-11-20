@@ -3,6 +3,7 @@
 int main(void)
 {
     int fd = open("text.txt", O_RDONLY);
+    int fd2 = open("test2.txt", O_RDONLY);
     char *line;
 
     if (fd == -1) {
@@ -11,9 +12,15 @@ int main(void)
     }
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("%s", line);
+        printf("this is file1: %s", line);
+        free(line);
+    }
+    while ((line = get_next_line(fd2)) != NULL)
+    {
+        printf("this is file2:  %s", line);
         free(line);
     }
     close(fd);
+    close(fd2);
     return (0);
 }
