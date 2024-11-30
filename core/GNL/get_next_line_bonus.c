@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabutale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:28:53 by sabutale          #+#    #+#             */
-/*   Updated: 2024/11/21 10:49:55 by sabutale         ###   ########.fr       */
+/*   Updated: 2024/11/21 11:50:14 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,20 +95,7 @@ char	*save_left(char *data)
 
 char	*get_next_line(int fd)
 {
-<<<<<<< HEAD:core/GNL/get_next_line.c
-  static char *leftover[1024];
-  char  *line;
-
-  if (fd < 0 || BUFFER_SIZE <= 0)
-    return (NULL);
-  leftover[fd] = read_to_leftover(fd, leftover[fd]);
-  if (!leftover[fd])
-    return (NULL);
-  line = get_line(leftover[fd]);
-  leftover[fd] = save_left(leftover[fd]);
-  return (line);
-=======
-	static char	*leftover;
+	static char	*leftover[1024];
 	char		*line;
 	char		*buffer;
 
@@ -117,11 +104,10 @@ char	*get_next_line(int fd)
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	leftover = read_to_leftover(fd, leftover, buffer);
-	if (!leftover)
+	leftover[fd] = read_to_leftover(fd, leftover[fd], buffer);
+	if (!leftover[fd])
 		return (NULL);
-	line = get_line1(leftover);
-	leftover = save_left(leftover);
+	line = get_line1(leftover[fd]);
+	leftover[fd] = save_left(leftover[fd]);
 	return (line);
->>>>>>> 72e06797ff50e971c8f2504bc1613136f885ce71:GNL/get_next_line.c
 }
