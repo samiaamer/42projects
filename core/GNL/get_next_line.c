@@ -85,15 +85,15 @@ char  *save_left(char *data)
 
 char *get_next_line(int fd)
 {
-  static char *leftover;
+  static char *leftover[1024];
   char  *line;
 
   if (fd < 0 || BUFFER_SIZE <= 0)
     return (NULL);
-  leftover = read_to_leftover(fd, leftover);
-  if (!leftover)
+  leftover[fd] = read_to_leftover(fd, leftover[fd]);
+  if (!leftover[fd])
     return (NULL);
-  line = get_line(leftover);
-  leftover = save_left(leftover);
+  line = get_line(leftover[fd]);
+  leftover[fd] = save_left(leftover[fd]);
   return (line);
 }
