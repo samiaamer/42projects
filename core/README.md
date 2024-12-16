@@ -22,7 +22,7 @@ The Common Core curriculum is designed to ensure that every student becomes a we
   - **Grade**: 100 / 100
     </br>
     
-- # [ft_printf](https://github.com/samiaamer/42projects/tree/1c8cff8c5ae42a6b4ac0670e461f2ddd53035211/core/libft) - ft_printf
+- # [ft_printf](https://github.com/samiaamer/42projects/tree/54cb7142ca96adb415d12332c3520b51099bcecb/core/printf) - ft_printf
 
    -**What it is**: ft_printf is about re-creating the printf function that formats and prints data in different ways. You have to make sure it works with different types of data like strings, integers, and floats.
 
