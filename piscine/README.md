@@ -106,12 +106,3 @@
 <br>
 <br>
 
-<div align="center">
-<br>
-<br>
-<br>
-
-# 42 Piscine Exams
-
-</div>
-
