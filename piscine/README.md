@@ -4,6 +4,11 @@
 
 </div>
 
+🎯 Piscine
+The journey at 42 begins with the Piscine—a month-long intensive coding bootcamp that serves as a test of endurance and skills. During the Piscine, students tackle a variety of projects in C, starting from basic concepts like pointers and memory management, to more advanced challenges like data structures and algorithms. The focus is on peer-to-peer learning and self-discipline, as the environment mimics real-world software development, where collaboration and problem-solving are key.
+
+</br>
+
 ## [C00](https://github.com/samiaamer/42amman/tree/41cb5ea6e141bd3757a7850fc3e23b50074154bb/finished/C00) - Introduction to C
 
 - [ex00: ft_putchar](https://github.com/samiaamer/42amman/blob/5e75ad10fafed9f9b4d8611064b3f5ed85153daa/finished/C00/ex00/ft_putchar.c) - Print a Character
