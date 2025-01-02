@@ -1,0 +1,79 @@
+this is file1: this is line one
+this is file1: this is file 2
+this is file1: this is line two.
+this is file1: Hello
+this is file1: this is line three.
+this is file1: hithis is file1: 
+this is file1: ### **Computer Security Definition**
+this is file1: 
+this is file1: - Protection of automated information systems to maintain:
+this is file1:     - **Confidentiality**
+this is file1:     - **Integrity**
+this is file1:     - **Availability**
+this is file1: 
+this is file1: ---
+this is file1: 
+this is file1: ### **CIA Triad**
+this is file1: 
+this is file1: 1. **Confidentiality**
+this is file1:     - Protects sensitive information from unauthorized access.
+this is file1:         - **Privacy**: Controls who can collect and share personal information.
+this is file1:         - it’s done through:
+this is file1:             - cryptography: computer —> Encryption key —> ciphertext ////  two important parts of it (cipher and key)
+this is file1:             - Authentication/Authorization: checking if the user is the owner of the data
+this is file1: 2. **Integrity**
+this is file1:     - **Data Integrity**: Ensures information is modified only in authorized ways. (trustworthiness of data)
+this is file1:         - integrity protection mechanisms:
+this is file1:             1. preventive: securing the data 
+this is file1:             2. Detective: every message has a Hash code if it changes then the message has been modified
+this is file1: 3. **Availability**
+this is file1:     - Ensures systems are accessible to authorized users when needed.
+this is file1:     - can be attacked through:
+this is file1:         1. DOS(Denial of Service): the user sends so many requests that the utilization of the server can’t handle
+this is file1:         2. DDOS(Distributed Denial of Service): sending these requests from many devices 
+this is file1: 4. **Accountability**
+this is file1:     - Ensures actions are traceable to responsible parties.
+this is file1: 5. Non-Repudiation: protection against denial by one of the entities of a behavior (uses digital signature)
+this is file1: 
+this is file1: ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/830cadd3-5bb9-411b-a488-702961fd90be/d079781c-3fc5-43e5-af02-8e8edc325b93/image.png)
+this is file1: 
+this is file1: ---
+this is file1: 
+this is file1: ### **Impact Levels of Security Breach**
+this is file1: 
+this is file1: - **Low**: Minor effects on operations or assets (e.g., slight financial loss).
+this is file1: - **Moderate**: Serious effects on operations or assets (e.g., significant financial loss).
+this is file1: - **High**: Severe effects, potentially catastrophic (e.g., loss of life).
+this is file1: 
+this is file1: ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/830cadd3-5bb9-411b-a488-702961fd90be/6bb5240c-e72a-4898-a14c-e11aeea0ec46/image.png)
+this is file1: 
+this is file1: ---
+this is file1: 
+this is file1: ### **Mind Map Representation**
+this is file1: 
+this is file1: ```
+this is file1:                   Computer Security
+this is file1:                         |
+this is file1:                 +-------+-------+
+this is file1:                 |               |
+this is file1:                CIA           Additional
+this is file1:                 |               |
+this is file1:           +-----+-----+       +---------+
+this is file1:           |     |     |       |         |
+this is file1:    Conf.  Int.  Avail.   Authenticity Accountability
+this is file1:       |        |        |
+this is file1:   +---+---+    |    +---+---+
+this is file1:   |       |    |    |       |
+this is file1: Data   Privacy Data  Sys.  Ensure traceability of actions
+this is file1: Conf.   Control Int.
+this is file1:          |
+this is file1:    +-----+-----+
+this is file1:    |           |
+this is file1:    Low       Moderate
+this is file1:    |           |
+this is file1: Minor     Serious Effects
+this is file1: Effects   (e.g., significant loss)
+this is file1: 
+this is file1: ```
+this is file1: 
+this is file1: ---
