@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen2(const char *s)
 {
 	size_t	i;
 
@@ -28,17 +28,17 @@ char	*read_to_leftover(int fd, char *leftover, char *buffer)
 	ssize_t	bytes_read;
 
 	if (!leftover)
-		leftover = ft_strdup("");
+		leftover = ft_strdup2("");
 	if (!leftover)
 		return (NULL);
 	bytes_read = 0;
-	while (!ft_strchr(leftover, '\n'))
+	while (!ft_strchr2(leftover, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read <= 0)
 			break ;
 		buffer[bytes_read] = '\0';
-		temp = ft_strjoin(leftover, buffer);
+		temp = ft_strjoin2(leftover, buffer);
 		if (!temp)
 			return (NULL);
 		free(leftover);
@@ -66,7 +66,7 @@ char	*get_line1(char *data)
 	line = malloc(i + 2);
 	if (!line)
 		return (NULL);
-	ft_strlcpy(line, data, i + 2);
+	ft_strlcpy2(line, data, i + 2);
 	return (line);
 }
 
@@ -84,11 +84,11 @@ char	*save_left(char *data)
 		free(data);
 		return (NULL);
 	}
-	len = ft_strlen(data + i + 1);
+	len = ft_strlen2(data + i + 1);
 	left = malloc(len + 1);
 	if (!left)
 		return (NULL);
-	ft_strlcpy(left, data + i + 1, len + 1);
+	ft_strlcpy2(left, data + i + 1, len + 1);
 	free(data);
 	return (left);
 }
