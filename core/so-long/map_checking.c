@@ -1,25 +1,25 @@
-#include "so-long.h"
+#include "so_long.h"
 
 //make sure all characters int the map are valid using check_line_chars function (after checking the boundaries)
-int    validate_map_char(t_map *map)
+int    validate_map_char(t_map *game)
 {
     size_t    i;
 
     i = 0;
-    while (i < map->line_count)
+    while (i < game->line_count)
     {
-        if (!check_line_chars(map->grid[i]))
+        if (check_line_chars(game->grid[i], game))
         {
-            printf("Invalid characters at line %ld:  %s\n", i, map->grid[i]);
-            return (0);
+            printf("Invalid characters at line %ld:  %s\n", i,game->grid[i]);
+            return (1);
         }
         i++;
     }
-    return (1);
+    return (0);
 }
 
 //count number of plyers
-int    count_plyers(t_map *map)
+int    count_plyers(t_map *game)
 {
     size_t     i;
     int     j;
@@ -27,12 +27,12 @@ int    count_plyers(t_map *map)
 
     i = 0;
     num_ply = 0;
-    while (i < map->line_count)
+    while (i < game->line_count)
     {
         j = 0;
-        while (map->grid[i][j] != '\0')
+        while (game->grid[i][j] != '\0')
         {
-            if (map->grid[i][j] == 'P')
+            if (game->grid[i][j] == 'P')
                 num_ply++;
             j++;
         }
@@ -41,7 +41,7 @@ int    count_plyers(t_map *map)
     return (num_ply);
 }
 
-int    count_exits(t_map *map)
+int    count_exits(t_map *game)
 {
     size_t     i;
     int     j;
@@ -49,12 +49,12 @@ int    count_exits(t_map *map)
 
     i = 0;
     num_exits = 0;
-    while (i < map->line_count)
+    while (i < game->line_count)
     {
         j = 0;
-        while (map->grid[i][j] != '\0')
+        while (game->grid[i][j] != '\0')
         {
-            if (map->grid[i][j] == 'E')
+            if (game->grid[i][j] == 'E')
                 num_exits++;
             j++;
         }
@@ -63,7 +63,7 @@ int    count_exits(t_map *map)
     return (num_exits);
 }
 
-int    count_collect(t_map *map)
+int    count_collect(t_map *game)
 {
     size_t     i;
     int     j;
@@ -71,12 +71,12 @@ int    count_collect(t_map *map)
 
     i = 0;
     num_coll = 0;
-    while (i < map->line_count)
+    while (i < game->line_count)
     {
         j = 0;
-        while (map->grid[i][j] != '\0')
+        while (game->grid[i][j] != '\0')
         {
-            if (map->grid[i][j] == 'E')
+            if (game->grid[i][j] == 'E')
                 num_coll++;
             j++;
         }
@@ -85,26 +85,25 @@ int    count_collect(t_map *map)
     return (num_coll);
 }
 
-int    check_rectangle_map(t_map *map)
+int    check_rectangle_map(t_map *game)
 {
     size_t   i;
     size_t   first_row_length;
     size_t   line_length;
 
-    if (map->line_count == 0)
-        return (1);
-    first_row_length = ft_strlen(map->grid[0]);
-    if (first_row_length > 0 && map->grid[0][first_row_length - 1] == '\n')
+    first_row_length = ft_strlen(game->grid[0]);
+    if (first_row_length > 0 && game->grid[0][first_row_length - 1] == '\n')
         first_row_length--;
     i = 1;
-    while (i < map->line_count)
+    while (i < game->line_count)
     {
-        line_length = ft_strlen(map->grid[i]);
-        if (line_length > 0 && map->grid[i][line_length - 1] == '\n')
+        line_length = ft_strlen(game->grid[i]);
+        if (line_length > 0 &&game->grid[i][line_length - 1] == '\n')
             line_length--;
         if (line_length != first_row_length)
             return(1);
         i++;
     }
+    game->line_len = line_length;
     return (0);
 }

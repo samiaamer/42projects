@@ -1,22 +1,22 @@
-#include "so-long.h"
+#include "so_long.h"
 
 //read map file and allocate memory for it
-int read_map_file(t_map *map)
+int read_map_file(t_map *game, char *map_name)
 {
     int fd;
 
-    fd = open("map.ber", O_RDONLY);
+    fd = open(map_name, O_RDONLY);
     if (fd == -1) 
     {
         perror("Error opening file");
         return 1;
     }
-    if (read_lines(fd, map)) 
-    {
-        close(fd);
+    if (count_lines(fd, game)) 
         return 1;
-    }
-    if (!validate_map(map)) 
+    fd = open(map_name, O_RDONLY);
+    if(add_line_to_map(game, fd))
+        return 1;
+    if (validate_map(game)) 
     {
         close(fd);
         return 1;
@@ -25,19 +25,21 @@ int read_map_file(t_map *map)
     return 0;
 }
 
-//read lines from the map file into map struct
-int     read_lines(int fd, t_map *map)
+//count lines from the map file
+int     count_lines(int fd, t_map *game)
 {
     char *line;
-    map->grid = NULL;
-    map->line_count = 0;
+    game->line_count = 0;
 
-    while ((line = get_next_line(fd)) != NULL) 
+    line = get_next_line(fd);
+    while (line != NULL) 
     {
-        if (add_line_to_map(map, line))
-            return 1;
+        game->line_count++;
+        free(line);
+        line = get_next_line(fd);
     }
-    if (map->line_count == 0) 
+    close(fd);
+    if (game->line_count == 0) 
     {
         printf("Error: Map file is empty.\n");
         return 1;
@@ -46,52 +48,66 @@ int     read_lines(int fd, t_map *map)
 }
 
 //adds the line to the map
-int     add_line_to_map(t_map *map, char *line)
+int     add_line_to_map(t_map *game, int fd)
 {
     char **temp_map;
+    char *line;
+    int     i;
 
-    temp_map = realloc(map->grid, sizeof(char *) * (map->line_count + 1));
+    temp_map = malloc(sizeof(temp_map) * game->line_count);
+    line = get_next_line(fd);
+    i = 0;
+    while (line != NULL) 
+    {
+        temp_map[i] = line;
+        i++;
+        line = get_next_line(fd);
+    }
     if (!temp_map) 
     {
         perror("Memory allocation failed");
-        free_map(map->grid, map->line_count);
+        free_map_sl(game->grid, game->line_count);
         return 1;
     }
-    map->grid = temp_map;
-    map->grid[map->line_count++] = line;
+    game->grid = temp_map;
     return 0;
 }
 
 //validate map boundaries and characters
-int     validate_map(t_map *map)
+int     validate_map(t_map *game)
 {
-    if (!check_map_boundaries(map) || !validate_map_char(map)) 
+    if(check_rectangle_map(game))
     {
-        return 1;
+        printf("Error: map is not rectangle.");
+        return(1);
     }
-    return check_player_exit_collect(map);
+    if (check_map_boundaries(game)|| validate_map_char(game)) 
+    {
+        return (1);
+    }
+    return check_player_exit_collect(game);
 }
 
 //check player, exit, and collectable counts
-int check_player_exit_collect(t_map *map) 
+int check_player_exit_collect(t_map *game) 
 {
-    map->player_count = count_plyers(map);
+    game->player_count = count_plyers(game);
 
-    if (map->player_count != 1) 
+    if (game->player_count != 1) 
     {
         printf("Error: There must be only one player 'P'.\n");
         return 1;
     }
-    map->exit_count = count_exits(map);
+    game->exit_count = count_exits(game);
 
-    if (map->exit_count != 1)
+    if (game->exit_count != 1)
     {
         printf("Error: There must be exactly one exit 'E'.\n");
         return 1;
     }
-    map->collectible_count = count_collect(map);
+    game->collectible_count = count_collect(game);
 
-    if (map->collectible_count == 0)
+    if (game->collectible_count == 0)
     {
         printf("Error: There must be at least one collectible 'C'.\n");
         return 1;
