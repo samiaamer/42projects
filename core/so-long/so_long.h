@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:41 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/15 17:27:56 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:50:37 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <fcntl.h>
 #include "libft/includes/libft.h"
 #include <mlx.h>
-#include <X11/X.h>
+#include <X11/keysym.h>
 
 #define HEIGHT 48
 #define WIDTH 48
@@ -41,7 +41,10 @@ typedef struct s_map
     void    *wall;
     void    *player;
     void    *collect;
-    void    *exit;
+    void    *exit_open;
+    void    *exit_close;
+    int     exit_x;
+    int     exit_y;
 }       t_map;
 
 
@@ -66,6 +69,6 @@ int    parse_map(t_map *game, char *map_name);
 int    init_mlx(t_map *game);
 int    img_init(t_map *game);
 int    put_img(t_map *game);
-int    key_hook(int keycode, t_map *var);
+int    key_hook(int keycode, t_map *game);
 
 #endif

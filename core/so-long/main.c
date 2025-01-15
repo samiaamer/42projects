@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:36 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/15 17:20:05 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:59:02 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int main(int argc, char **argv)
         // free_map_sl(game.grid, game.line_count);
         if(init_mlx(&game))
             return (1);
+        //mlx_hook(game.mlx_win, 17, 0, my_exit_function, &game);//to exit the window through the X
+        mlx_hook(game.mlx_win, 2, 1L<<0, key_hook, &game);
         mlx_loop(game.mlx_ptr);
     }
     return (0);

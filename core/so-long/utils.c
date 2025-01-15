@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:29 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/15 17:20:17 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:53:04 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int     img_init(t_map *game)
     game->player = mlx_xpm_file_to_image(game->mlx_ptr, "img/player.xpm", &i, &j);
     if(!game->player)
         return (img_handle());
-    game->exit = mlx_xpm_file_to_image(game->mlx_ptr, "img/exit_close.xpm", &i, &j);
-    if(!game->exit)
+    game->exit_close = mlx_xpm_file_to_image(game->mlx_ptr, "img/exit_close.xpm", &i, &j);
+    if(!game->exit_close)
+        return (img_handle());
+    game->exit_open = mlx_xpm_file_to_image(game->mlx_ptr, "img/exit_open.xpm", &i, &j);
+    if(!game->exit_open)
         return (img_handle());
     game->wall = mlx_xpm_file_to_image(game->mlx_ptr, "img/wall.xpm", &i, &j);
     if(!game->wall)
@@ -62,11 +65,15 @@ void     block_img(t_map *game, size_t i, size_t j)
     if (game->grid[i][j] == 'P')
     {
         mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->player, j * WIDTH, i * HEIGHT);
-        game->player_x = j * WIDTH;
-        game->player_y = i * HEIGHT;
+        game->player_x = j;
+        game->player_y = i;
     }
     if (game->grid[i][j] == 'E')
-        mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->exit, j * WIDTH, i * HEIGHT);
+    {
+        mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->exit_close, j * WIDTH, i * HEIGHT);
+        game->exit_x = j;
+        game->exit_y = i;
+    }
     if (game->grid[i][j] == 'C')
         mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->collect, j * WIDTH, i * HEIGHT);
 }
@@ -80,6 +87,7 @@ int     put_img(t_map *game)
     while (i < game->line_count)
     {
         j = 0;
+
         while (j < game->line_len)
         {
             block_img(game, i, j);

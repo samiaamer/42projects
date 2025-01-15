@@ -4,7 +4,7 @@ MLXFLAGS = -lmlx -lX11 -lXext
 
 LIBFT_DIR = libft
 
-SRCS = main.c map_validation.c map_checking.c map_utils.c utils.c
+SRCS = main.c map_validation.c map_checking.c map_utils.c utils.c move.c
 OBJS = $(SRCS:.c=.o)
 
 
