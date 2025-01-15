@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 15:11:41 by sabutale          #+#    #+#             */
+/*   Updated: 2025/01/15 17:27:56 by sabutale         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -5,9 +17,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include "libft/libft.h"
-#include "printf/ft_printf.h"
-#include "GNL/get_next_line.h"
+#include "libft/includes/libft.h"
+#include <mlx.h>
+#include <X11/X.h>
 
 #define HEIGHT 48
 #define WIDTH 48
@@ -25,12 +37,16 @@ typedef struct s_map
     char    **map;
     int     player_x;
     int     player_y;
-    int     map_x;
-    int     map_y;
+    void    *floor;
+    void    *wall;
+    void    *player;
+    void    *collect;
+    void    *exit;
 }       t_map;
 
 
 void   free_map_sl(char **map, int line_count);
+void   block_img(t_map *game, size_t i, size_t j);
 int    check_line_boundaries(char *line, t_map *game);
 int    check_first_last_lines(char *line, t_map *game);
 int    check_map_boundaries(t_map *map);
@@ -46,5 +62,10 @@ int    count_lines(int fd, t_map *map);
 int    add_line_to_map(t_map *map, int fd);
 int    validate_map(t_map *map);
 int    check_player_exit_collect(t_map *map);
+int    parse_map(t_map *game, char *map_name);
+int    init_mlx(t_map *game);
+int    img_init(t_map *game);
+int    put_img(t_map *game);
+int    key_hook(int keycode, t_map *var);
 
 #endif

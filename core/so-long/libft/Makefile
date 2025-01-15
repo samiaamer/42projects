@@ -1,19 +1,37 @@
-SRC			= ft_strlen ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_toupper ft_tolower ft_strchr ft_strrchr ft_strncmp ft_strlcpy ft_strlcat ft_atoi ft_memset ft_bzero ft_memcpy ft_memchr ft_memcmp ft_strnstr ft_calloc ft_strdup  ft_substr ft_memmove ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd ft_strjoin ft_itoa ft_strtrim ft_strmapi ft_striteri ft_split
-SRCS		= $(addsuffix .c, ${SRC})
-OBJS		= ${SRCS:.c=.o}
 NAME		= libft.a
+
 CC			= cc
-RM			= rm -f
-AR			= ar rcs
-CFLAGS		= -Wall -Wextra -Werror
+
+CFLAGS		= -Wall -Wextra -Werror -Iincludes
+
+SRCDIR		= src
+INCLDIR		= includes
+OBJDIR		= obj
+
+SRC_FILES			= ft_strlen.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strlcpy.c ft_strlcat.c ft_atoi.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_calloc.c ft_strdup.c  ft_substr.c ft_memmove.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strjoin.c ft_itoa.c ft_strtrim.c ft_strmapi.c ft_striteri.c ft_split.c get_next_line.c ft_print_char.c ft_printf.c ft_print_unsigned.c ft_print_integer.c ft_print_hex.c ft_print_string.c 
+
+
+SRCS		= $(addprefix $(SRCDIR)/, $(SRC_FILES))
+OBJ		= $(addprefix $(OBJDIR)/, $(SRC_FILES:.c=.o))
+
+
 all: $(NAME)
-%.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
-$(NAME): ${OBJS}
-	${AR} ${NAME} ${OBJS}
+	
+$(NAME): ${OBJ}
+	@ ar rcs ${NAME} ${OBJ}
+	
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+	
 clean:
-	${RM} ${OBJS}
+	@ rm -f ${OBJ}
+	
 fclean: clean
-	${RM} ${NAME}
+	@ rm -f ${NAME}
+	
 re: fclean all
+
 .PHONY:	all clean fclean re

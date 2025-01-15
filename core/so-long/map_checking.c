@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_checking.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 15:11:54 by sabutale          #+#    #+#             */
+/*   Updated: 2025/01/15 15:11:55 by sabutale         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 //make sure all characters int the map are valid using check_line_chars function (after checking the boundaries)
@@ -10,7 +22,7 @@ int    validate_map_char(t_map *game)
     {
         if (check_line_chars(game->grid[i], game))
         {
-            printf("Invalid characters at line %ld:  %s\n", i,game->grid[i]);
+            ft_printf("Invalid characters at line %ld:  %s\n", i,game->grid[i]);
             return (1);
         }
         i++;

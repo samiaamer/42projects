@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 15:24:25 by sabutale          #+#    #+#             */
+/*   Updated: 2025/01/15 15:24:26 by sabutale         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 //read map file and allocate memory for it
@@ -41,7 +53,7 @@ int     count_lines(int fd, t_map *game)
     close(fd);
     if (game->line_count == 0) 
     {
-        printf("Error: Map file is empty.\n");
+       ft_printf("Error: Map file is empty.\n");
         return 1;
     }
     return 0;
@@ -78,7 +90,7 @@ int     validate_map(t_map *game)
 {
     if(check_rectangle_map(game))
     {
-        printf("Error: map is not rectangle.");
+       ft_printf("Error: map is not rectangle.");
         return(1);
     }
     if (check_map_boundaries(game)|| validate_map_char(game)) 
@@ -95,21 +107,21 @@ int check_player_exit_collect(t_map *game)
 
     if (game->player_count != 1) 
     {
-        printf("Error: There must be only one player 'P'.\n");
+       ft_printf("Error: There must be only one player 'P'.\n");
         return 1;
     }
     game->exit_count = count_exits(game);
 
     if (game->exit_count != 1)
     {
-        printf("Error: There must be exactly one exit 'E'.\n");
+       ft_printf("Error: There must be exactly one exit 'E'.\n");
         return 1;
     }
     game->collectible_count = count_collect(game);
 
     if (game->collectible_count == 0)
     {
-        printf("Error: There must be at least one collectible 'C'.\n");
+       ft_printf("Error: There must be at least one collectible 'C'.\n");
         return 1;
     }
     return 0;

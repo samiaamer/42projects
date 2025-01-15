@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 15:12:04 by sabutale          #+#    #+#             */
+/*   Updated: 2025/01/15 15:12:05 by sabutale         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 //checks if the first and last characters in a line are '1' (top and botton lines)
@@ -5,7 +17,7 @@ int    check_line_boundaries(char *line, t_map *game)
 {
     if (line[0] != '1' || line[game->line_len - 1] != '1')
     {
-        printf("Boundary error at line: %s\n", line);
+       ft_printf("Boundary error at line: %s\n", line);
         return (1);
     }
     return (0);
@@ -21,7 +33,7 @@ int     check_first_last_lines(char *line, t_map *game)
     {
         if (line[i] != '1')
         {
-            printf("Boundry error at line: %s\n", line);
+           ft_printf("Boundry error at line: %s\n", line);
             return (1);
         }
         i++;
