@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:29 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/15 19:53:04 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:35:56 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int     init_mlx(t_map *game)
     return (0);
 }
 
-int     img_handle()
+int     img_handle(t_map *game)
 {
-    ft_printf("Error: faild to open the image.\n");
+    free_all(game, 0, "Error: faild to open the image.\n");
         return (1);
 }
 
@@ -36,22 +36,28 @@ int     img_init(t_map *game)
     
     game->floor = mlx_xpm_file_to_image(game->mlx_ptr, "img/floor.xpm", &i, &j);
     if(!game->floor)
-        return (img_handle());
+        return (img_handle(game));
     game->collect = mlx_xpm_file_to_image(game->mlx_ptr, "img/collectables.xpm", &i, &j);
     if(!game->collect)
-        return (img_handle());
+        return (img_handle(game));
     game->player = mlx_xpm_file_to_image(game->mlx_ptr, "img/player.xpm", &i, &j);
     if(!game->player)
-        return (img_handle());
-    game->exit_close = mlx_xpm_file_to_image(game->mlx_ptr, "img/exit_close.xpm", &i, &j);
-    if(!game->exit_close)
-        return (img_handle());
+        return (img_handle(game));
+    game->up = mlx_xpm_file_to_image(game->mlx_ptr, "img/up.xpm", &i, &j);
+    if(!game->up)
+        return (img_handle(game));
+    game->left = mlx_xpm_file_to_image(game->mlx_ptr, "img/left.xpm", &i, &j);
+    if(!game->left)
+        return (img_handle(game));
+    game->right = mlx_xpm_file_to_image(game->mlx_ptr, "img/right.xpm", &i, &j);
+    if(!game->right)
+        return (img_handle(game));
     game->exit_open = mlx_xpm_file_to_image(game->mlx_ptr, "img/exit_open.xpm", &i, &j);
     if(!game->exit_open)
-        return (img_handle());
+        return (img_handle(game));
     game->wall = mlx_xpm_file_to_image(game->mlx_ptr, "img/wall.xpm", &i, &j);
     if(!game->wall)
-        return (img_handle());
+        return (img_handle(game));
     put_img(game);
     return (0);
 }
@@ -70,7 +76,7 @@ void     block_img(t_map *game, size_t i, size_t j)
     }
     if (game->grid[i][j] == 'E')
     {
-        mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->exit_close, j * WIDTH, i * HEIGHT);
+        mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->floor, j * WIDTH, i * HEIGHT);
         game->exit_x = j;
         game->exit_y = i;
     }

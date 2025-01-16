@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:24:25 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/15 15:24:26 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:20:22 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ int read_map_file(t_map *game, char *map_name)
     }
     close(fd);
     return 0;
+}
+
+void copy_grid(t_map *game)
+{
+    size_t i;
+
+    i = 0;
+    game->o_grid = malloc(sizeof(game->o_grid) * game->line_count);
+    while (i < game->line_count)
+    {
+        game->o_grid[i] = ft_strdup(game->grid[i]);
+        i++;
+    }
+    
 }
 
 //count lines from the map file

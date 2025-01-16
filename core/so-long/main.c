@@ -6,24 +6,11 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:36 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/15 19:59:02 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:49:42 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void     free_map_sl(char **game, int line_count)
-{
-    int i;
-    
-    i = 0;
-    while (i < line_count)
-    {
-        free(game[i]);
-        i++;
-    }
-    free(game);
-}
 
 int     parse_map(t_map *game, char *map_name)
 {
@@ -34,7 +21,7 @@ int     parse_map(t_map *game, char *map_name)
     j = 0;
     if (read_map_file(game, map_name)) 
     {
-       ft_printf("Error reading map file.\n");
+        ft_printf("Error reading map file.\n");
         return (1);
     }
     while (i < game->line_count)
@@ -56,11 +43,13 @@ int main(int argc, char **argv)
     t_map  game;
     if (argc == 2)
     {
-        parse_map(&game, argv[1]);
-        // free_map_sl(game.grid, game.line_count);
+        init_values(&game);
+        if(parse_map(&game, argv[1]))
+            return (1);
+        copy_grid(&game);
         if(init_mlx(&game))
             return (1);
-        //mlx_hook(game.mlx_win, 17, 0, my_exit_function, &game);//to exit the window through the X
+        mlx_hook(game.mlx_win, 17, 0, free_all, &game);//to exit the window through the X
         mlx_hook(game.mlx_win, 2, 1L<<0, key_hook, &game);
         mlx_loop(game.mlx_ptr);
     }

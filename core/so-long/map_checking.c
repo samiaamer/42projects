@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:54 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/15 15:11:55 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:08:30 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int    count_exits(t_map *game)
 int    count_collect(t_map *game)
 {
     size_t     i;
-    int     j;
+    size_t     j;
     int     num_coll;
 
     i = 0;
@@ -86,9 +86,9 @@ int    count_collect(t_map *game)
     while (i < game->line_count)
     {
         j = 0;
-        while (game->grid[i][j] != '\0')
+        while (j < game->line_len)
         {
-            if (game->grid[i][j] == 'E')
+            if (game->grid[i][j] == 'C')
                 num_coll++;
             j++;
         }
