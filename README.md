@@ -18,6 +18,6 @@ The **42 network**, founded in Paris in 2013, offers a unique and innovative lea
 At 42, we follow the **Norm**—a strict coding standard to ensure clean and readable code. Some key rules include:
 
 - No `for`, `do...while`, `switch`, `case`, `goto`, ternary operators, or variable-length arrays allowed.
-- Each function must be a maximum of **25 lines**, excluding the curly brackets.
+- Each function must be a maximum of **25 lines**.
 - No line should exceed **80 columns**, including comments.
 - A function can have a maximum of **4 param
