@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:29 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/16 18:35:56 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:08:37 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void     block_img(t_map *game, size_t i, size_t j)
     if (game->grid[i][j] == 'P')
     {
         mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->player, j * WIDTH, i * HEIGHT);
-        game->player_x = j;
-        game->player_y = i;
     }
     if (game->grid[i][j] == 'E')
     {

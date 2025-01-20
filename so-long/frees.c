@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:20:00 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/16 19:15:05 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:22:37 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ int    free_all(t_map *game, int flag, char *message)
     {    mlx_destroy_display(game->mlx_ptr);
         free(game->mlx_ptr);
     }
-    if (flag)
-        perror(message);
-    else if(!flag)
-        ft_printf("%s", message);
+    if (flag == 1)
+        ft_putstr_fd(message, 2);
+   else if(flag == 0)
+        ft_putstr_fd(message, 1);
     exit(flag);
     return (0);
 }

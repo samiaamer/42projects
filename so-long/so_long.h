@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:41 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/16 18:52:25 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:05:39 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,20 @@ typedef struct s_map
     int     player_y;
     int     exit_x;
     int     exit_y;
+    int     flood_collect;
+    int     exit_flag;
 }       t_map;
 
 
 void    free_map_sl(char **map, int line_count);
 void    destroy_img(t_map *game);
-int    free_all(t_map *game, int flag, char *message);
+int     free_all(t_map *game, int flag, char *message);
 void    block_img(t_map *game, size_t i, size_t j);
 void    copy_grid(t_map *game);
-void init_values(t_map *game);
+void    init_values(t_map *game);
+void    flood_fill(t_map *game, int x, int y);
+void  print_map(t_map *game);
+void    find_player_pos(t_map *game);
 int     check_line_boundaries(char *line, t_map *game);
 int     check_first_last_lines(char *line, t_map *game);
 int     check_map_boundaries(t_map *map);

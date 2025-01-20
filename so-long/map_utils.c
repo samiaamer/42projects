@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:24:25 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/16 16:20:22 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:23:40 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int     validate_map(t_map *game)
 }
 
 //check player, exit, and collectable counts
-int check_player_exit_collect(t_map *game) 
+int     check_player_exit_collect(t_map *game)
 {
     game->player_count = count_plyers(game);
 
@@ -132,7 +132,7 @@ int check_player_exit_collect(t_map *game)
         return 1;
     }
     game->collectible_count = count_collect(game);
-
+    game->flood_collect = game->collectible_count;
     if (game->collectible_count == 0)
     {
        ft_printf("Error: There must be at least one collectible 'C'.\n");

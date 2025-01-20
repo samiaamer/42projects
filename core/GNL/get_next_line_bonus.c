@@ -27,10 +27,6 @@ char	*read_to_leftover(int fd, char *leftover, char *buffer)
 	char	*temp;
 	ssize_t	bytes_read;
 
-	if (!leftover)
-		leftover = ft_strdup("");
-	if (!leftover)
-		return (NULL);
 	bytes_read = 0;
 	while (!ft_strchr(leftover, '\n'))
 	{
@@ -95,7 +91,7 @@ char	*save_left(char *data)
 
 char	*get_next_line(int fd)
 {
-	static char	*leftover[1024];
+	static char	*leftover[1042];
 	char		*line;
 	char		*buffer;
 
@@ -103,6 +99,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
+		return (NULL);
+	if (!leftover[fd])
+		leftover[fd] = ft_strdup("");
+	if (!leftover[fd])
 		return (NULL);
 	leftover[fd] = read_to_leftover(fd, leftover[fd], buffer);
 	if (!leftover[fd])

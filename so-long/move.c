@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 17:20:38 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/16 18:39:05 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:30:32 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void init_values(t_map *game)
     game->player_count = 0;
     game->line_len = 0;
     game->line_count = 0;
+    game->flood_collect = 0;
+    game->exit_flag = 0;
     game->exit_open = NULL;
     game->collect = NULL;
     game->player = NULL;

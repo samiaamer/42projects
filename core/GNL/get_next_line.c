@@ -27,10 +27,6 @@ char	*read_to_leftover(int fd, char *leftover, char *buffer)
 	char	*temp;
 	ssize_t	bytes_read;
 
-	if (!leftover)
-		leftover = ft_strdup("");
-	if (!leftover)
-		return (NULL);
 	bytes_read = 0;
 	while (!ft_strchr(leftover, '\n'))
 	{
@@ -95,19 +91,6 @@ char	*save_left(char *data)
 
 char	*get_next_line(int fd)
 {
-<<<<<<< HEAD:core/GNL/get_next_line.c
-  static char *leftover[1024];
-  char  *line;
-
-  if (fd < 0 || BUFFER_SIZE <= 0)
-    return (NULL);
-  leftover[fd] = read_to_leftover(fd, leftover[fd]);
-  if (!leftover[fd])
-    return (NULL);
-  line = get_line(leftover[fd]);
-  leftover[fd] = save_left(leftover[fd]);
-  return (line);
-=======
 	static char	*leftover;
 	char		*line;
 	char		*buffer;
@@ -117,11 +100,14 @@ char	*get_next_line(int fd)
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
+	if (!leftover)
+		leftover = ft_strdup("");
+	if (!leftover)
+		return (NULL);
 	leftover = read_to_leftover(fd, leftover, buffer);
 	if (!leftover)
 		return (NULL);
 	line = get_line1(leftover);
 	leftover = save_left(leftover);
 	return (line);
->>>>>>> 72e06797ff50e971c8f2504bc1613136f885ce71:GNL/get_next_line.c
 }
