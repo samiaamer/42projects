@@ -16,7 +16,8 @@
 # include "../libft/includes/libft.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
-# include "../minilibx-linux/mlx.h"
+//# include "../minilibx-linux/mlx.h"
+# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

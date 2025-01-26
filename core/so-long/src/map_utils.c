@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samia <samia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:24:25 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/25 23:57:50 by samia            ###   ########.fr       */
+/*   Updated: 2025/01/26 13:26:48 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,17 @@ int	add_line_to_map(t_map *game, int fd)
 	temp_map = malloc(sizeof(temp_map) * game->line_count);
 	line = get_next_line(fd);
 	i = 0;
-	while (line != NULL)
-	{
-		temp_map[i] = line;
-		i++;
-		line = get_next_line(fd);
-	}
 	if (!temp_map)
 	{
 		perror("Memory allocation failed");
 		free_map_sl(game->grid, game->line_count);
 		return (1);
+	}
+	while (line != NULL)
+	{
+		temp_map[i] = line;
+		i++;
+		line = get_next_line(fd);
 	}
 	game->grid = temp_map;
 	return (0);
@@ -78,13 +78,11 @@ int	validate_map(t_map *game)
 {
 	if (check_rectangle_map(game))
 	{
-		ft_printf("Error: map is not rectangle.");
+		ft_printf("Error: map is not rectangle.\n");
 		return (1);
 	}
 	if (check_map_boundaries(game) || validate_map_char(game))
-	{
 		return (1);
-	}
 	return (check_player_exit_collect(game));
 }
 

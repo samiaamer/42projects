@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samia <samia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:36 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/25 23:57:58 by samia            ###   ########.fr       */
+/*   Updated: 2025/01/26 13:33:53 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	read_map_file(t_map *game, char *map_name)
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Error opening file.\n");
+		perror("Error opening file");
 		return (1);
 	}
 	if (count_lines(fd, game))
@@ -70,7 +70,7 @@ int	parse_map(t_map *game, char *map_name)
 	if (read_map_file(game, map_name) || check_ext(map_name))
 	{
 		free_map_sl(game->grid, game->line_count);
-		ft_printf("Error reading map file.\n");
+		// ft_printf("Error reading map file.\n");
 		return (1);
 	}
 	copy_grid(game);
@@ -78,6 +78,8 @@ int	parse_map(t_map *game, char *map_name)
 	flood_fill(game, game->player_x, game->player_y);
 	if (!(game->exit_flag && game->flood_collect == 0))
 	{
+		free_map_sl(game->grid, game->line_count);
+		free_map_sl(game->o_grid, game->line_count);
 		ft_printf("Error: map not solvable.\n");
 		return (1);
 	}

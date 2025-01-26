@@ -21,6 +21,8 @@ static int	handle_format(char format, va_list args)
 		return (ft_print_char(va_arg(args, int)));
 	else if (format == 'd' || format == 'i')
 		return (ft_print_integer(va_arg(args, int)));
+	else if (format == 'p')
+		return (ft_print_pointer(va_arg(args, void *)));
 	else if (format == 'x' || format == 'X')
 		return (ft_print_hex(va_arg(args, unsigned int), format));
 	else if (format == 'u')

@@ -23,6 +23,7 @@ int	ft_print_char(char c);
 int	ft_print_integer(int num);
 int	ft_print_unsigned(unsigned int num);
 int	ft_print_hex(unsigned long num, char specifier);
+int	ft_print_pointer(void *ptr);
 int	ft_printf(const char *format, ...);
 
 #endif

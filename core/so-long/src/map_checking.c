@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checking.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samia <samia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:54 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/25 23:57:54 by samia            ###   ########.fr       */
+/*   Updated: 2025/01/26 13:28:14 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	validate_map_char(t_map *game)
 	{
 		if (check_line_chars(game->grid[i], game))
 		{
-			ft_printf("Invalid characters at line %ld:  %s\n", i,
+			ft_printf("Invalid characters at line %d:  %s\n", i,
 				game->grid[i]);
 			return (1);
 		}
