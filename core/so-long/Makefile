@@ -1,11 +1,17 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -Iincludes
 MLXFLAGS = -lmlx -lX11 -lXext 
 
 LIBFT_DIR = libft
 
-SRCS = main.c map_validation.c map_checking.c map_utils.c utils.c move.c frees.c path_check.c init.c
-OBJS = $(SRCS:.c=.o)
+SRCDIR = src
+INCLDIR = includes
+OBJDIR = obj
+
+SRC_FILES = main.c map_validation.c map_checking.c map_utils.c utils.c move.c frees.c path_check.c init.c
+
+SRCS = $(addprefix $(SRCDIR)/, $(SRC_FILES))
+OBJ		= $(addprefix $(OBJDIR)/, $(SRC_FILES:.c=.o))
 
 
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -13,8 +19,16 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 NAME = so_long
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLXFLAGS)
+all: $(NAME)
+
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MLXFLAGS)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -24,7 +38,7 @@ $(LIBFT):
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 	$(MAKE) clean -C $(LIBFT_DIR)
 	
 
