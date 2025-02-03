@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:21 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/03 18:28:43 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:57:05 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int     check_dup(int nbr, t_push *head)
     while (temp)
     {
         if (nbr == temp->data)
-            return (0);
+            exit_free(head, 1);
         temp = temp->next;
     }
     return (nbr);
@@ -58,10 +58,10 @@ int     push_swap_atoi(const char *nbr, t_push *head)
 	while (nbr[i])
 	{
         if ('0' > nbr[i] || nbr[i] > '9')
-            error_free(head);
+            exit_free(head, 1);
         res = res * 10 + nbr[i] - '0';
 		if ((res * sign) > INT_MAX || (res * sign) < INT_MIN)
-            error_free(head);
+            exit_free(head, 1);
         i++;
 	}
 	return (sign * res);
@@ -80,7 +80,7 @@ t_push    *create_stack(int argc, char **argv)
     {
         node = create_node(check_dup(push_swap_atoi(argv[i], head), head));
         if (!node)
-            error_free(head);
+            exit_free(head, 1);
         if (!head)
             head = node;
         else

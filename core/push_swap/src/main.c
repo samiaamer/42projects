@@ -6,17 +6,18 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:54:32 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/03 18:38:39 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:53:02 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    error_free(t_push *head)
+void    exit_free(t_push *head, int flag)
 {
     t_push  *temp;
     
-    ft_putstr_fd("Error\n", 2);
+    if (flag)
+        ft_putstr_fd("Error\n", 2);
     if (head)
     {
         while (head)
@@ -26,7 +27,7 @@ void    error_free(t_push *head)
             free(temp);
         }
     }
-    exit(1);
+    exit(flag);
 }
 
 void    print_list(t_push *head)
@@ -54,7 +55,7 @@ int     main(int argc, char **argv)
     indexing (stack_a);
     print_list(stack_a);
     if (is_sorted (stack_a))
-        error_free (stack_a);
+         exit_free (stack_a, 0);
     // (void)stack_a;
     (void)stack_b;
     return (0);

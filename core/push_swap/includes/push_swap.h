@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:24:30 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/03 18:37:46 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:54:29 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int     check_dup(int nbr, t_push *head);
 int     push_swap_atoi(const char *nbr, t_push *head);
 int     main(int argc, char **argv);
 int     is_sorted (t_push *head);
-void    error_free(t_push *head);
+void    exit_free(t_push *head, int flag);
 void    print_list(t_push *head);
 void    indexing (t_push *head);
 

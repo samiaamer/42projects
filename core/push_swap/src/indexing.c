@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:30:16 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/03 18:36:33 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:47:56 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ t_push    *find_smallest(t_push *head)
     smallest = NULL;
     cur = head;
     while (cur)
-    {
-        
+    { 
         if (cur->index == -1 && (!smallest || smallest->data > cur->data))
             smallest = cur;
         cur = cur->next;
