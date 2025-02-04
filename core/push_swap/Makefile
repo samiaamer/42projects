@@ -7,7 +7,7 @@ SRCDIR = src
 INCLDIR = includes
 OBJDIR = obj
 
-SRC_FILES = main.c create_stack.c indexing.c
+SRC_FILES = main.c create_stack.c indexing.c free.c swap.c rotate.c push.c simple_sort.c 
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC_FILES))
 OBJ		= $(addprefix $(OBJDIR)/, $(SRC_FILES:.c=.o))
