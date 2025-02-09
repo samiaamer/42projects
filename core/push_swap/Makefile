@@ -33,7 +33,7 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJDIR)
 	$(MAKE) clean -C $(LIBFT_DIR)
 	
 fclean: clean

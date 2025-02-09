@@ -27,10 +27,10 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 	
 clean:
-	@ rm -f ${OBJ}
+	@ rm -rf ${OBJDIR}
 	
 fclean: clean
-	@ rm -f ${NAME}
+	@ rm -rf ${NAME}
 	
 re: fclean all
 
