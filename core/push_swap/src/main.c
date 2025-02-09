@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 void	print_list(t_push *head)
 {
 	t_push	*current;
@@ -22,7 +22,7 @@ void	print_list(t_push *head)
 		printf("Data: %d, Index: %d\n", current->data, current->index);
 		current = current->next;
 	}
-}
+}*/
 
 int	main(int argc, char **argv)
 {
