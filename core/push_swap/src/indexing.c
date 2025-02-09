@@ -6,13 +6,13 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:30:16 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/04 12:23:17 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:09:23 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push	*find_smallest(t_push *head)
+t_push	*find_smallest_undindexed(t_push *head)
 {
 	t_push	*cur;
 	t_push	*smallest;
@@ -34,8 +34,13 @@ void	indexing(t_push *head)
 	t_push	*smallest;
 
 	index = 0;
-	while ((smallest = find_smallest(head)))
+	while (1)
+	{
+		smallest = find_smallest_undindexed(head);
+		if (!smallest)
+			break ;
 		smallest->index = index++;
+	}
 }
 
 int	is_sorted(t_push *head)

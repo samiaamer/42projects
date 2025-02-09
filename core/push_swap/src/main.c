@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:54:32 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/04 12:07:01 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:31:38 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,20 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		exit(0);
 	stack_a = create_stack(argc, argv);
-	print_list(stack_a);
 	indexing(stack_a);
-	print_list(stack_a);
 	if (is_sorted(stack_a))
 		exit_free(stack_a, 0);
-	// (void)stack_a;
-	(void)stack_b;
+	if (stack_len(stack_a) == 2)
+		swap(&stack_a, 'a');
+	else if (stack_len(stack_a) == 3)
+		sort_three(&stack_a);
+	else if (stack_len(stack_a) == 4)
+		sort_four(&stack_a, &stack_b);
+	else if (stack_len(stack_a) == 5)
+		sort_five(&stack_a, &stack_b);
+	else
+		radix_sort(&stack_a, &stack_b, num_iter(max_index(stack_a)));
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }

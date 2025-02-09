@@ -7,7 +7,7 @@ SRCDIR = src
 INCLDIR = includes
 OBJDIR = obj
 
-SRC_FILES = main.c create_stack.c indexing.c free.c swap.c rotate.c push.c simple_sort.c 
+SRC_FILES = main.c create_stack.c indexing.c free.c swap.c rotate.c push.c simple_sort.c reverse.c utils.c radix_sort.c
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC_FILES))
 OBJ		= $(addprefix $(OBJDIR)/, $(SRC_FILES:.c=.o))
@@ -33,11 +33,11 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ)
 	$(MAKE) clean -C $(LIBFT_DIR)
 	
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean $(NAME)

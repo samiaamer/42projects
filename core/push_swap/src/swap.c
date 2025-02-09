@@ -6,50 +6,31 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:55:27 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/04 13:19:31 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/09 18:26:36 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     sa(t_push *head)
+void	swap(t_push **head, char c)
 {
-    t_push  *next;
-    int     t_val;
-    int     t_ind;
-    
-    next = head->next->data;
-    if (!head || !next)
-        exit_free(head, 1);
-    t_val = head->data;
-    t_ind = head->index;
-    head->data = next->data;
-    head->index = next->index;
-    next->data = t_val;
-    next->index = t_ind;
-    write (1, "sa\n", 3);
-    return (0);
+	t_push	*next;
+
+	if (!(*head) || !(*head)->next)
+		return ;
+	next = (*head)->next;
+	(*head)->next = next->next;
+	next->next = (*head);
+	(*head) = next;
+	if (c == 'a')
+		write(1, "sa\n", 3);
+	else if (c == 'b')
+		write(1, "sb\n", 3);
 }
-int     sb(t_push *head)
+
+void	ss(t_push **stack_a, t_push **stack_b)
 {
-    t_push  *next;
-    int     t_val;
-    int     t_ind;
-    
-    next = head->next->data;
-    if (!head || !next)
-        exit_free(head, 1);
-    t_val = head->data;
-    t_ind = head->index;
-    head->data = next->data;
-    head->index = next->index;
-    next->data = t_val;
-    next->index = t_ind;
-    write (1, "sb\n", 3);
-    return (0);
-}
-int     ss(t_push *head)
-{
-    sa(head);
-    sb(head);
+	swap(stack_a, 'x');
+	swap(stack_b, 'x');
+	write(1, "ss\n", 3);
 }

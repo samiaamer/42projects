@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:21 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/04 12:21:55 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/09 18:13:14 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_push	*create_node(int nbr)
 {
 	t_push	*node;
 
-	node = malloc (sizeof(t_push));
+	node = malloc(sizeof(t_push));
 	if (!node)
 		return (NULL);
 	node->data = nbr;
@@ -48,7 +48,7 @@ int	push_swap_atoi(const char *nbr, t_push *head)
 	res = 0;
 	i = 0;
 	sign = 1;
-	if (nbr[i] == '-' || nbr[i] == '+')
+	if ((nbr[i] == '-' || nbr[i] == '+') && ft_strlen(nbr) > 1)
 	{
 		if (nbr[i] == '-')
 			sign = -1;

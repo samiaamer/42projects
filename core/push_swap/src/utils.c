@@ -1,36 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 11:47:39 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/09 18:26:10 by sabutale         ###   ########.fr       */
+/*   Created: 2025/02/04 19:10:29 by sabutale          #+#    #+#             */
+/*   Updated: 2025/02/09 18:26:39 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	exit_free(t_push *head, int flag)
+t_push	*find_smallest(t_push *head)
 {
-	if (flag)
-		ft_putstr_fd("Error\n", 2);
-	free_stack(head);
-	exit(flag);
+	t_push	*tmp;
+	t_push	*small;
+
+	small = NULL;
+	tmp = head;
+	while (tmp->next)
+	{
+		if (tmp->index == 0)
+			small = tmp;
+		tmp = tmp->next;
+	}
+	return (small);
 }
 
-void	free_stack(t_push *head)
+int	stack_len(t_push *head)
 {
-	t_push	*temp;
+	t_push	*tmp;
+	int		i;
 
-	if (head)
+	i = 0;
+	tmp = head;
+	while (tmp)
 	{
-		while (head)
-		{
-			temp = head;
-			head = head->next;
-			free(temp);
-		}
+		i++;
+		tmp = tmp->next;
 	}
+	return (i);
 }
