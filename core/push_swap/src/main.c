@@ -11,6 +11,21 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+<<<<<<< HEAD
+=======
+/*
+void	print_list(t_push *head)
+{
+	t_push	*current;
+
+	current = head;
+	while (current != NULL)
+	{
+		printf("Data: %d, Index: %d\n", current->data, current->index);
+		current = current->next;
+	}
+}*/
+>>>>>>> 500be3a0338fac03a7b6a64086f2b42f75d903c6
 
 int	main(int argc, char **argv)
 {
