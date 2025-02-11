@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:40:06 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/11 15:52:55 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:34:07 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int check_pid(char *pid)
     {
         if (!(pid[i] >= '0' && pid[i] <= '9'))
         {
-            write(1,"ERROR\n", 5);
+            ft_printf("ERROR\n");
                 exit(1);
         }
         i++;
@@ -56,16 +56,14 @@ void    convert(int pid, char *str)
         while (i >= 0)
         {
             if ((*str >> i) & 1)
-                printf("1");
-                //kill(pid, SIGUSR1);
+                kill(pid, SIGUSR1);
             else if (!((*str >> i) & 1))
-                printf("0");
-                //kill(pid, SIGUSR2);
+                kill(pid, SIGUSR2);
             i--;
         }
         
         str++;
-        printf("\n");
+        ft_printf("\n");
     }
     end_str(pid);
 }

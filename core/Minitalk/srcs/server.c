@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:33:12 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/11 16:00:47 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:33:18 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main()
 {
     struct sigaction sig;
     int pid = getpid();
-    printf("%d", pid);
+    ft_printf("%d", pid);
     sig.sa_handler = signal_handler;
     sigemptyset(&sig.sa_mask);
     sigaction(SIGUSR1, &sig, NULL);
