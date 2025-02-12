@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:40:06 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/11 16:34:07 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:32:54 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void    end_str(int pid)
     while (i < 8)
     {
         kill(pid, SIGUSR2);
+        i++;
+        usleep(300);
     }
 }
 
@@ -60,10 +62,9 @@ void    convert(int pid, char *str)
             else if (!((*str >> i) & 1))
                 kill(pid, SIGUSR2);
             i--;
+            usleep(300);
         }
-        
         str++;
-        ft_printf("\n");
     }
     end_str(pid);
 }
@@ -73,9 +74,12 @@ int main(int argc, char **argv)
     if(argc == 3)
     {
         int pid;
+        //t_minitalk *var = 0;
         
         pid = check_pid(argv[1]);
         // printf("%d\n", pid);
+        //var->len = ft_strlen(argv[1]);
         convert(pid, argv[2]);
     }
+    return (0);
 }
