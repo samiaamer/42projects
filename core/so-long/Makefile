@@ -1,6 +1,6 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes
-MLXFLAGS = -lmlx -lX11 -lXext 
+CFLAGS = -Wall -Wextra -Werror -Iincludes 
+MLXFLAGS = -L ./minilibx-linux -lmlx -lX11 -lXext 
 
 LIBFT_DIR = libft
 

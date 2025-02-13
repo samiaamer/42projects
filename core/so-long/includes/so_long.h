@@ -6,7 +6,7 @@
 /*   By: samia <samia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:11:41 by sabutale          #+#    #+#             */
-/*   Updated: 2025/01/25 23:54:51 by samia            ###   ########.fr       */
+/*   Updated: 2025/02/07 20:10:41 by samia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "../libft/includes/libft.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
-//# include "../minilibx-linux/mlx.h"
-# include <mlx.h>
+# include "../minilibx-linux/mlx.h"
+//# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
