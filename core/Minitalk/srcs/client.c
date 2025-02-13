@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:40:06 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/12 19:32:54 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:52:38 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void    end_str(int pid)
     {
         kill(pid, SIGUSR2);
         i++;
-        usleep(300);
+        usleep(400);
     }
 }
 
@@ -62,7 +62,7 @@ void    convert(int pid, char *str)
             else if (!((*str >> i) & 1))
                 kill(pid, SIGUSR2);
             i--;
-            usleep(300);
+            usleep(400);
         }
         str++;
     }

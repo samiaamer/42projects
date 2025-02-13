@@ -6,7 +6,7 @@
 /*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:33:12 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/12 19:47:15 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:14:44 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ void    signal_handler(int sig)
 char    *reallocation(char *str, char n_char)
 {
     char *n_str;
+    char *c;
 
-    n_str = ft_strjoin(str, &n_char);
+    c =malloc(2);
+    c[0] = n_char;
+    c[1] = '\0';
+    n_str = ft_strjoin(str, c);
     if (!n_str)
         return (NULL);
+    free(c);
     free(str);
     return (n_str);
 }
@@ -51,19 +56,24 @@ int main()
 
     ft_printf("%d\n", pid);
     sig.sa_handler = signal_handler;
+    sig.sa_flags = SA_RESTART; 
     sigemptyset(&sig.sa_mask);
-
-    str = ft_strdup("");  // Initialize string to store message
+    str = ft_strdup("");  
     if (!str)
         return (1);
-
+    sigaction(SIGUSR1, &sig, NULL);
+    sigaction(SIGUSR2, &sig, NULL);
     while (1)
     {
-        sigaction(SIGUSR1, &sig, NULL);
-        sigaction(SIGUSR2, &sig, NULL);
+        pause();
+        if (!str)
+        {
+            str = ft_strdup("");  
+            if (!str)
+                return (1);
+        }
         bit++;
-
-        if (bit % 8 == 0)  // Every 8 bits, a character is complete
+        if (bit % 8 == 0)  
         {        
             str = reallocation(str, chr);
             if (!str)
@@ -72,12 +82,9 @@ int main()
             {
                 ft_printf("message is %s\n", str);
                 free(str);
-                str = ft_strdup("");  // Reset str for next message
-                if (!str)
-                    return (1);
+                str = NULL;
             }
-            bit = 0;  // Reset bit counter after processing a character
+            bit = 0;  
         }
-        pause();
     }
 }
