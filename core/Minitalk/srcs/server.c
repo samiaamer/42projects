@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samia <samia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:33:12 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/13 16:20:29 by sabutale         ###   ########.fr       */
+/*   Updated: 2025/02/15 11:10:01 by samia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ int main()
     str = ft_strdup("");  
     if (!str)
         return (1);
-    sigaction(SIGUSR1, &sig, NULL);
-    sigaction(SIGUSR2, &sig, NULL);
+    if(sigaction(SIGUSR1, &sig, NULL) == -1)
+        return(0);
+    if (sigaction(SIGUSR2, &sig, NULL) == -1)
+        return(0);
     while (1)
     {
         pause();
