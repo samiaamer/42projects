@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samia <samia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sabutale <sabutale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:33:12 by sabutale          #+#    #+#             */
-/*   Updated: 2025/02/15 11:10:01 by samia            ###   ########.fr       */
+/*   Updated: 2025/02/15 14:07:04 by sabutale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void    signal_handler(int sig)
         static char c = 0;
         if(sig == SIGUSR1)
                 c |= 1 << j;
-        else if (sig == SIGUSR2)
-                c |= 0 << j;
         j--;
         if (j < 0)
         {
@@ -37,6 +35,8 @@ char    *reallocation(char *str, char n_char)
     char *c;
 
     c =malloc(2);
+    if(!c)
+        return(NULL);
     c[0] = n_char;
     c[1] = '\0';
     n_str = ft_strjoin(str, c);
@@ -46,6 +46,8 @@ char    *reallocation(char *str, char n_char)
     free(str);
     return (n_str);
 }
+
+
 
 int main()
 {
@@ -59,12 +61,19 @@ int main()
     sig.sa_flags = SA_RESTART; 
     sigemptyset(&sig.sa_mask);
     str = ft_strdup("");  
+    printf("str len %ld\n", ft_strlen(str));
     if (!str)
         return (1);
     if(sigaction(SIGUSR1, &sig, NULL) == -1)
-        return(0);
+    {
+		ft_printf("Error: Could not handle SIGUSR1.\n");
+		exit(1);
+	}
     if (sigaction(SIGUSR2, &sig, NULL) == -1)
-        return(0);
+    {
+		ft_printf("Error: Could not handle SIGUSR2.\n");
+		exit(1);
+	}
     while (1)
     {
         pause();
@@ -82,7 +91,7 @@ int main()
                 return (1);
             if (chr == '\0')
             {
-                ft_printf("message is %s\n", str);
+                ft_printf("%s\n", str);
                 free(str);
                 str = NULL;
             }
